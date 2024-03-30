@@ -58,7 +58,7 @@ def create_blog(request):
             blog = form.save(commit=False)
             blog.user = request.user
             blog.save()
-            return redirect('blog_detail', pk=blog.pk)  # Redirect to the home page after successfully creating a post
+            return redirect('blog_detail', pk=blog.pk)  
     else:
         form = BlogForm()
     return render(request, 'create.html', {'form': form})
@@ -72,7 +72,7 @@ def edit_blog(request,pk):
         form = BlogPostUpdateForm(request.POST, request.FILES, instance=blog)
         if form.is_valid():
             form.save()
-            return redirect('blog_detail', pk=blog.pk)  # Assuming you have a URL named 'blog_list' for listing blogs
+            return redirect('blog_detail', pk=blog.pk)  
     else:
         form = BlogPostUpdateForm(instance=blog)
     return render(request, 'update.html', {'form': form})
@@ -83,7 +83,7 @@ def delete_blog(request, pk):
     if request.method == 'POST':
         blog.delete()
         return redirect('blog_list')
-    return render(request, 'delete.html', {'blog': blog})  # Redirect to the home page
+    return render(request, 'delete.html', {'blog': blog})  
 
 
 
