@@ -10,7 +10,7 @@ class BlogForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super(BlogForm, self).__init__(*args, **kwargs)
-        self.fields['media'].required = False  # Make media field optional
+        self.fields['media'].required = False  
 
     def save(self, commit=True):
         blog = super(BlogForm, self).save(commit=False)
